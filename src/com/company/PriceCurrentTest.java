@@ -20,35 +20,57 @@ public class PriceCurrentTest {
 
     @Test
     public void changePrice(){
-        PriceCurrent result = new PriceCurrent();
-        result.addProduct(18501, new Product("Candle", 99.99));
-        result.addProduct(18504, new Product("Soup", 79.90));
-        result.addProduct(18505, new Product("Towel", 249.90));
+        PriceCurrent OldResult = new PriceCurrent();
+        PriceCurrent NewResult = new PriceCurrent();
 
-        assertTrue(result.changePrice(18501, 49.90));
-        assertFalse(result.changePrice(18503, 49.90));
+        OldResult.addProduct(18501, new Product("Candle", 99.99));
+        OldResult.addProduct(18504, new Product("Soup", 79.90));
+        OldResult.addProduct(18505, new Product("Towel", 249.90));
+        NewResult.addProduct(18501, new Product("Candle", 99.99));
+        NewResult.addProduct(18504, new Product("Soup", 79.90));
+        NewResult.addProduct(18505, new Product("Towel", 249.90));
+
+        assertEquals(OldResult, NewResult);
+        assertTrue(OldResult.changePrice(18501, 49.90));
+        assertFalse(OldResult.changePrice(18503, 49.90));
+        assertNotEquals(OldResult, NewResult);
     }
 
     @Test
     public void changeName(){
-        PriceCurrent result = new PriceCurrent();
-        result.addProduct(18501, new Product("Candle", 99.99));
-        result.addProduct(18504, new Product("Soup", 79.90));
-        result.addProduct(18505, new Product("Towel", 249.90));
+        PriceCurrent OldResult = new PriceCurrent();
+        PriceCurrent NewResult = new PriceCurrent();
 
-        assertTrue(result.changeName(18501, "Rope"));
-        assertFalse(result.changeName(18503, "Spoon"));
+        OldResult.addProduct(18501, new Product("Candle", 99.99));
+        OldResult.addProduct(18504, new Product("Soup", 79.90));
+        OldResult.addProduct(18505, new Product("Towel", 249.90));
+        NewResult.addProduct(18501, new Product("Candle", 99.99));
+        NewResult.addProduct(18504, new Product("Soup", 79.90));
+        NewResult.addProduct(18505, new Product("Towel", 249.90));
+
+        assertEquals(OldResult, NewResult);
+        assertTrue(OldResult.changeName(18501, "Rope"));
+        assertFalse(OldResult.changeName(18503, "Spoon"));
+        assertNotEquals(OldResult, NewResult);
+
     }
 
     @Test
     public void removeProduct(){
-        PriceCurrent result = new PriceCurrent();
-        result.addProduct(18501, new Product("Candle", 99.99));
-        result.addProduct(18504, new Product("Soup", 79.90));
-        result.addProduct(18505, new Product("Towel", 249.90));
+        PriceCurrent OldResult = new PriceCurrent();
+        PriceCurrent NewResult = new PriceCurrent();
 
-        assertTrue(result.removeProduct(18501));
-        assertFalse(result.removeProduct(18503));
+        OldResult.addProduct(18501, new Product("Candle", 99.99));
+        OldResult.addProduct(18504, new Product("Soup", 79.90));
+        OldResult.addProduct(18505, new Product("Towel", 249.90));
+        NewResult.addProduct(18501, new Product("Candle", 99.99));
+        NewResult.addProduct(18504, new Product("Soup", 79.90));
+        NewResult.addProduct(18505, new Product("Towel", 249.90));
+
+        assertEquals(OldResult, NewResult);
+        assertTrue(OldResult.removeProduct(18501));
+        assertFalse(OldResult.removeProduct(18503));
+        assertNotEquals(OldResult, NewResult);
     }
 
     @Test
