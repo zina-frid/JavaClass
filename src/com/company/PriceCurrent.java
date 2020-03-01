@@ -55,11 +55,7 @@ public class PriceCurrent {
      */
 
     public boolean removeProduct(int code) {
-        if (priceCurrent.containsKey(code)) {
-            priceCurrent.remove(code);
-            return true;
-        }
-        return false;
+        return priceCurrent.remove(code) != null;
     }
 
     /**
