@@ -6,7 +6,8 @@ import java.util.Map;
 public class PriceCurrent {
     private final Map<Integer, Product> priceCurrent = new HashMap<>();
 
-    /** Добавление нового товара
+    /**
+     * Добавление нового товара
      * Возвращает true, если товар успешно добавлен.
      * В ином случае возвращает false
      */
@@ -19,12 +20,13 @@ public class PriceCurrent {
         return true;
     }
 
-    /** Изменение цены товара
+    /**
+     * Изменение цены товара
      * Возвращает true, если цена товара успешно изменена.
      * В ином случае возвращает false
      */
 
-    public boolean changePrice(int code, double newPrice) {
+    public boolean changePrice(int code, Price newPrice) {
         if (priceCurrent.containsKey(code)) {
             priceCurrent.get(code).setPrice(newPrice);
             return true;
@@ -32,7 +34,8 @@ public class PriceCurrent {
         return false;
     }
 
-    /** Изменение имени товара
+    /**
+     * Изменение имени товара
      * Возвращает true, если имя товара успешно изменена.
      * В ином случае возвращает false
      */
@@ -45,7 +48,8 @@ public class PriceCurrent {
         return false;
     }
 
-    /** Удаление товара
+    /**
+     * Удаление товара
      * Возвращает true, если товар успешно удален.
      * В ином случае возвращает false
      */
@@ -62,8 +66,31 @@ public class PriceCurrent {
      * Возврат конечной стоимости товара по его коду и количеству экземпляров
      */
 
-    public double finalCost(int code, int amount) {
-        return priceCurrent.get(code).getPrice() * amount;
+    public Price finalCost(int code, int amount) {
+        int rubles = priceCurrent.get(code).getPrice().getRubles() * amount +
+                priceCurrent.get(code).getPrice().getPennies() * amount / 100;
+        int pennies =  priceCurrent.get(code).getPrice().getPennies() * amount % 100;
+        return new Price(rubles, pennies);
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        {
+            for (Integer code : priceCurrent.keySet()) {
+                builder.append("Code: ").append(code).
+                        append(" Name: ").append(priceCurrent.get(code).getName()).
+                        append(" Price: ").append(priceCurrent.get(code).getPrice()).append("\n");
+            }
+            return builder.toString();
+        }
+    }
+
+
+    @Override
+    public int hashCode() {
+        return priceCurrent.hashCode();
     }
 
     @Override
@@ -76,16 +103,5 @@ public class PriceCurrent {
         return false;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder(); {
-            for (Integer code : priceCurrent.keySet()) {
-                builder.append("Code: ").append(code).
-                        append(" Name: ").append(priceCurrent.get(code).getName()).
-                        append(" Price: ").append(priceCurrent.get(code).getPrice()).append("\n");
-            }
-            return builder.toString();
-        }
-    }
 
 }

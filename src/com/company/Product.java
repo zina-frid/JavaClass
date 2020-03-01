@@ -2,14 +2,14 @@ package com.company;
 
 public class Product {
     String name;
-    double price;
+    Price price;
 
-    Product(String name, double price) {
+    Product(String name, Price price) {
         this.name = name;
         this.price = price;
     }
 
-    public double getPrice() {
+    public Price getPrice() {
         return price;
     }
 
@@ -21,8 +21,8 @@ public class Product {
         this.name = name;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPrice(Price price1) {
+        this.price = new Price (price1.getRubles(), price1.getPennies());
     }
 
     @Override
@@ -30,9 +30,21 @@ public class Product {
         if (this == obj) return true;
         if (obj instanceof Product) {
             Product other = (Product) obj;
-            return name == other.name
-                    && price == other.price;
+            return name.equals(other.name)
+                    && price.equals(other.price);
         }
         return false;
+    }
+
+    @Override
+    public final int hashCode() {
+        int result = 1;
+        if (name != null) {
+            result = 31 * result + name.hashCode();
+        }
+        if (price != null) {
+            result = (31 * result) + price.hashCode();
+        }
+        return result;
     }
 }
