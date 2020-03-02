@@ -6,6 +6,11 @@ import java.util.Map;
 public class PriceCurrent {
     private final Map<Integer, Product> priceCurrent = new HashMap<>();
 
+    public Product getProductByCode(int code) {
+        return priceCurrent.get(code);
+    }
+
+
     /**
      * Добавление нового товара
      * Возвращает true, если товар успешно добавлен.
