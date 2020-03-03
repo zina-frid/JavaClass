@@ -21,8 +21,8 @@ public class Product {
         this.name = name;
     }
 
-    public void setPrice(Price price1) {
-        this.price = new Price (price1.getRubles(), price1.getPennies());
+    public void setPrice(Price price) {
+        this.price = new Price (price.getRubles(), price.getPennies());
     }
 
     @Override

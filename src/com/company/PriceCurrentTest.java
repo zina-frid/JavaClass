@@ -14,6 +14,7 @@ public class PriceCurrentTest {
 
         PriceCurrent result = new PriceCurrent();
 
+
         assertTrue(result.addProduct(18500, new Product("Book", new Price(549, 99))));
         assertTrue(result.addProduct(18501, new Product("Candle", new Price (99,99))));
         assertTrue(result.addProduct(18502, new Product("Mirror", new Price (999,90))));

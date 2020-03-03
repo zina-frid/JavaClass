@@ -6,15 +6,20 @@ import java.util.Map;
 public class PriceCurrent {
     private final Map<Integer, Product> priceCurrent = new HashMap<>();
 
+
+    /**
+     * Возвращение товара по его коду.
+     */
+
     public Product getProductByCode(int code) {
         return priceCurrent.get(code);
     }
 
 
     /**
-     * Добавление нового товара
+     * Добавление нового товара.
      * Возвращает true, если товар успешно добавлен.
-     * В ином случае возвращает false
+     * В ином случае возвращает false.
      */
 
     public boolean addProduct(int code, Product product) {
@@ -26,9 +31,9 @@ public class PriceCurrent {
     }
 
     /**
-     * Изменение цены товара
+     * Изменение цены товара.
      * Возвращает true, если цена товара успешно изменена.
-     * В ином случае возвращает false
+     * В ином случае возвращает false.
      */
 
     public boolean changePrice(int code, Price newPrice) {
@@ -40,9 +45,9 @@ public class PriceCurrent {
     }
 
     /**
-     * Изменение имени товара
+     * Изменение имени товара.
      * Возвращает true, если имя товара успешно изменена.
-     * В ином случае возвращает false
+     * В ином случае возвращает false.
      */
 
     public boolean changeName(int code, String newName) {
@@ -54,9 +59,9 @@ public class PriceCurrent {
     }
 
     /**
-     * Удаление товара
+     * Удаление товара.
      * Возвращает true, если товар успешно удален.
-     * В ином случае возвращает false
+     * В ином случае возвращает false.
      */
 
     public boolean removeProduct(int code) {
@@ -64,7 +69,7 @@ public class PriceCurrent {
     }
 
     /**
-     * Возврат конечной стоимости товара по его коду и количеству экземпляров
+     * Возврат конечной стоимости товара по его коду и количеству экземпляров.
      */
 
     public Price finalCost(int code, int amount) {
